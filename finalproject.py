@@ -26,10 +26,12 @@ def update_b():
             #server vulnerable to attacks message
     elif Question == 'yes' or Question == 'y':
         print('Applying updates, and configuring optimal settings')
-        updater = sub.Popen(['sudo', 'apt-get','install' ,'tree'], stdout = sub.PIPE) 
-        #updater_confirm = str(sub.Popen(['sudo', 'apt-get', 'install', 'apache2'], stdout = sub.PIPE)    
-        outputz=updater.communicate()
-        print(outputz)
+        updater = sub.Popen(['sudo', 'apt-get','install' ,'tree'], stdout = sub.PIPE)    
+        updatedd=updater.communicate()
+        print(updatedd)
+    #    apache_starter= sub.Popen(['service'. 'apache2' , 'start']), stdout = sub.PIPE)
+      #  apache_started= apache_starter.communicate()
+   #     print(updatedd)
          #next steps
 def main():
     Apache_v= str(sub.run(['apache2' , '-v'], stdout=sub.PIPE))
