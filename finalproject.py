@@ -79,9 +79,6 @@ def servertoken(location_2):
             if check == False:
                 print('Refer to configuration number 4 of the Security Best Practices document for hiding server tokens')
                 break
-def SSL():
-    pass
-
 
 
 
