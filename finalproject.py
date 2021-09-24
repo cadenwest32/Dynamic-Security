@@ -16,7 +16,8 @@ def update_a(config_file, config_file_2):
             #config_file = sys.argv[1]
             #config_file_2 = sys.argv[2]
             whitelist(config_file)
-            servertoken(config_file_2)
+            servertoken(config_file)
+            htaccess(config_file_2)
             break
             #next steps from below
         else: 
@@ -31,7 +32,7 @@ def update_b():
             #server vulnerable to attacks message
         elif Question == 'yes' or Question == 'y':
             print('Applying updates, and configuring optimal settings')
-            updater = sub.Popen(['sudo', 'apt-get','install' ,'apache2'], stdout = sub.PIPE)    
+            updater = sub.Popen(['sudo', 'apt-get','install' ,'apache2', '-y'], stdout = sub.PIPE)    
             updatedd=updater.communicate()
             print(updatedd)
             break
@@ -79,6 +80,20 @@ def servertoken(location_2):
             if check == False:
                 print('Refer to configuration number 4 of the Security Best Practices document for hiding server tokens')
                 break
+def htaccess(location_3):
+    with open(location_3) as open_file_3:
+        check = False
+        while check == False:
+            for line in open_file_3:
+                if line.startswith('AllowOverride None'):
+                    print('Correct settings detected, you have successfully blocked vulnerable configurations')
+                    check = True
+                    break
+            if check == False:
+                print('Refer to configuration number 2 of the Security Best Practices document for blocking .htaccess')
+                break
+            
+
 
 
 
@@ -96,3 +111,10 @@ def main():
     else:   
         update_b()
 main()
+
+#TODO move current_v (move all global variables into the function)
+#TODO move apache_v and php_v into the main function 
+#TODO move version check if statement into 'defmain' function
+#TODO call the appropriate update function at the end and pass apache_v variable into functions (both)
+#TODO ---TELL PYTHON TO TAKE BACK TGE OUTPUT INSTEAD OF KALI PROCESSING IT THE WAY IT DOES.......KEEP THINGS TEH SAME......SUBPROCESS  STANDARDOUT=_ CHEKC OUTPUT
+
